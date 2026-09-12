@@ -24,77 +24,128 @@
             line-height: 1.6;
         }
 
-        /* TOP BAR */
+        /* MODERN TOP BAR + HEADER */
         .top-bar {
-            background: #082b63;
-            color: white;
+            background: #061b3a;
+            color: rgba(255,255,255,.9);
             padding: 8px 6%;
             display: flex;
             justify-content: space-between;
-            font-size: 14px;
+            gap: 15px;
+            font-size: 13px;
+            letter-spacing: .2px;
         }
 
-        /* HEADER */
         header {
-            background: linear-gradient(135deg, #1565c0, #1976d2);
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 90% 10%, rgba(255,202,40,.20), transparent 28%),
+                linear-gradient(135deg, #082b63 0%, #0d47a1 48%, #1976d2 100%);
             color: white;
-            padding: 25px 6%;
+            padding: 24px 6%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 25px;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.06);
+            right: -90px;
+            top: -130px;
         }
 
         .school-name {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
-            width: 75px;
-            height: 75px;
-            background: white;
-            color: #1565c0;
-            border-radius: 50%;
+            width: 68px;
+            height: 68px;
+            flex: 0 0 68px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.97);
+            color: #0d47a1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 25px;
-            font-weight: bold;
-            border: 4px solid #ffca28;
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            border: 2px solid rgba(255,202,40,.9);
+            box-shadow: 0 12px 30px rgba(0,0,0,.20);
         }
 
+        .logo span:nth-child(2) { color: #1976d2; }
+        .logo span { transform: none; }
+
         .school-name h1 {
-            font-size: 30px;
+            font-size: clamp(21px, 3vw, 31px);
+            line-height: 1.1;
+            margin-bottom: 5px;
         }
 
         .school-name p {
-            font-size: 15px;
+            font-size: 13px;
+            color: rgba(255,255,255,.82);
+        }
+
+        .header-badge {
+            position: relative;
+            z-index: 1;
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,.25);
+            background: rgba(255,255,255,.10);
+            backdrop-filter: blur(12px);
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
         }
 
         /* NAVBAR */
         nav {
-            background: #0d47a1;
-            padding: 15px;
+            background: rgba(255,255,255,.94);
+            backdrop-filter: blur(14px);
+            padding: 12px 5%;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 8px 25px rgba(8,43,99,.10);
+            border-bottom: 1px solid rgba(13,71,161,.08);
         }
 
         nav a {
-            color: white;
+            display: inline-block;
+            color: #16345f;
             text-decoration: none;
-            margin: 0 18px;
-            font-weight: bold;
-            transition: 0.3s;
+            margin: 4px 10px;
+            padding: 9px 13px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: .25s ease;
         }
 
         nav a:hover {
-            color: #ffeb3b;
+            color: #0d47a1;
+            background: #eaf2ff;
+            transform: translateY(-1px);
         }
 
         /* HERO */
+
         .hero {
             min-height: 430px;
             display: flex;
@@ -108,7 +159,7 @@
                     rgba(13, 71, 161, 0.78),
                     rgba(21, 101, 192, 0.78)
                 ),
-                url("https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80")
+                url("images/school1.jpg")
                 center/cover;
 
             color: white;
@@ -148,6 +199,41 @@
         .btn-blue {
             background: white;
             color: #1565c0;
+        }
+
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 8px 0 12px;
+        }
+
+        .quick-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 20px;
+            border: 1px solid rgba(255,255,255,0.65);
+            border-radius: 999px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .quick-btn.primary {
+            background: #ffca28;
+            color: #172033;
+            border-color: #ffca28;
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.18);
         }
 
         /* COMMON SECTION */
@@ -344,84 +430,138 @@
             margin-right: 10px;
         }
 
-        /* GALLERY */
-        <div class="gallery">
+        
+        /* MODERN GALLERY */
+        .section-kicker {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: #1976d2;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
 
-    <div class="gallery-item">
-        <img src="school1.jpg" alt="School plantation activity">
-    </div>
-
-    <div class="gallery-item">
-        <img src="photo2.jpg" alt="School Activity">
-    </div>
-
-    <div class="gallery-item">
-        <img src="photo3.jpg" alt="School Activity">
-    </div>
-
-</div>
         .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 220px;
-    gap: 18px;
-}
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-}
+        .gallery-item {
+            position: relative;
+            min-height: 360px;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            border-radius: 24px;
+            cursor: pointer;
+            background: #dbe8ff;
+            box-shadow: 0 18px 45px rgba(8,43,99,.15);
+            text-align: left;
+        }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            display: block;
+            object-fit: cover;
+            transition: transform .65s cubic-bezier(.2,.8,.2,1), filter .45s ease;
+        }
 
-.gallery-item::after {
-    content: "⌕";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.35);
-    color: white;
-    font-size: 42px;
-    opacity: 0;
-    transition: 0.3s ease;
-}
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 35%, rgba(3,20,46,.82) 100%);
+            pointer-events: none;
+        }
 
-.gallery-item:hover img {
-    transform: scale(1.08);
-}
+        .gallery-item:hover img {
+            transform: scale(1.07);
+            filter: saturate(1.08) brightness(.88);
+        }
 
-.gallery-item:hover::after {
-    opacity: 1;
-}
+        .gallery-caption {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            bottom: 22px;
+            z-index: 2;
+            color: white;
+        }
 
-/* Featured photos */
-.gallery-item:nth-child(1),
-.gallery-item:nth-child(4) {
-    grid-row: span 2;
-}
+        .gallery-caption strong {
+            display: block;
+            font-size: 21px;
+            margin-bottom: 4px;
+        }
 
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 180px;
-        gap: 12px;
-    }
+        .gallery-caption small {
+            display: block;
+            color: rgba(255,255,255,.82);
+            font-size: 13px;
+        }
 
-    .gallery-item:nth-child(1),
-    .gallery-item:nth-child(4) {
-        grid-row: span 1;
-    }
-}
+        .gallery-caption::after {
+            content: "  Open photo  →";
+            display: inline-block;
+            margin-top: 12px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.16);
+            border: 1px solid rgba(255,255,255,.24);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            background: rgba(2,10,24,.88);
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.show { display: flex; }
+
+        .lightbox img {
+            max-width: min(1100px, 94vw);
+            max-height: 84vh;
+            border-radius: 18px;
+            box-shadow: 0 25px 80px rgba(0,0,0,.45);
+            object-fit: contain;
+        }
+
+        .lightbox-title {
+            position: absolute;
+            left: 25px;
+            bottom: 22px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            right: 22px;
+            top: 18px;
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.14);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
         /* CONTACT */
         .contact {
             background: #eaf3ff;
@@ -541,6 +681,16 @@
                 font-size: 17px;
             }
 
+            .quick-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quick-btn {
+                width: min(280px, 90vw);
+                justify-content: center;
+            }
+
             section {
                 padding: 45px 5%;
             }
@@ -560,15 +710,256 @@
                 margin: auto;
             }
         }
-    </style>
+    
+        /* MODERN MVM LOGO */
+        .logo {
+            width: 76px;
+            height: 76px;
+            background: rgba(255,255,255,.96);
+            color: #0d47a1;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1px;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            border: 3px solid #ffca28;
+            box-shadow: 0 10px 25px rgba(0,0,0,.18);
+            transform: rotate(-3deg);
+        }
+
+        .logo span:nth-child(2) {
+            color: #1565c0;
+            transform: translateY(-5px);
+        }
+
+        .logo span:nth-child(3) {
+            color: #0d47a1;
+        }
+
+        /* MODERN QUICK LINKS */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .quick-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            color: #fff;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.38);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 22px rgba(0,0,0,.14);
+            transition: .25s ease;
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-3px);
+            background: #ffca28;
+            color: #082b63;
+            box-shadow: 0 12px 28px rgba(0,0,0,.2);
+        }
+
+        .quick-btn.primary {
+            background: #ffca28;
+            color: #082b63;
+            border-color: #ffca28;
+        }
+
+        .quick-btn.primary:hover {
+            background: #fff;
+            color: #0d47a1;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                width: 62px;
+                height: 62px;
+                font-size: 18px;
+                border-radius: 18px;
+            }
+
+            .quick-links {
+                gap: 9px;
+            }
+
+            .quick-btn {
+                padding: 11px 15px;
+                font-size: 13px;
+            }
+        }
+
+    
+
+        /* SCHOOL STATS */
+        .school-stats {
+            position: relative;
+            margin: 0;
+            padding: 52px 6%;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,.12), transparent 24%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,.10), transparent 25%),
+                linear-gradient(135deg, #082b63, #0d47a1 55%, #1976d2);
+        }
+
+        .school-stats::before,
+        .school-stats::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .school-stats::before {
+            width: 320px;
+            height: 320px;
+            left: -170px;
+            top: -180px;
+        }
+
+        .school-stats::after {
+            width: 420px;
+            height: 420px;
+            right: -220px;
+            bottom: -260px;
+        }
+
+        .stats-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1180px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .stat-card {
+            text-align: center;
+            color: white;
+            padding: 10px 12px;
+        }
+
+        .stat-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 29px;
+            background: rgba(255,255,255,.13);
+            border: 1px solid rgba(255,255,255,.65);
+            box-shadow: 0 12px 30px rgba(0,0,0,.16);
+            transition: transform .3s ease, background .3s ease;
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: translateY(-6px) scale(1.05);
+            background: rgba(255,255,255,.22);
+        }
+
+        .stat-number {
+            font-size: clamp(34px, 4vw, 46px);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: .5px;
+        }
+
+        .stat-line {
+            width: 26px;
+            height: 2px;
+            margin: 13px auto 14px;
+            background: rgba(255,255,255,.65);
+            border-radius: 99px;
+        }
+
+        .stat-label {
+            color: #ffdf55;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: .5px;
+        }
+
+        @media (max-width: 700px) {
+            .school-stats {
+                padding: 38px 4%;
+            }
+
+            .stats-wrap {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px 10px;
+            }
+
+            .stat-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 24px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .stat-label {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .top-bar {
+                justify-content: center;
+                text-align: center;
+                flex-wrap: wrap;
+            }
+
+            header {
+                padding: 20px 5%;
+            }
+
+            .header-badge {
+                display: none;
+            }
+
+            nav a {
+                margin: 3px 2px;
+                padding: 8px 9px;
+                font-size: 13px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item,
+            .gallery-item img {
+                min-height: 280px;
+            }
+        }
+
+</style>
 </head>
 
 <body>
 
     <!-- TOP BAR -->
     <div class="top-bar">
-        <span>?? Quality Education Since 1981</span>
-        <span>?? School Office | ?? info@mvm.example</span>
+        <span>Quality Education Since 1981</span>
+        <span>School Office</span>
     </div>
 
     <!-- HEADER -->
@@ -576,13 +967,13 @@
 
         <div class="school-name">
 
-            <div class="logo">
-                MVM
-            </div>
+            <div class="logo" aria-label="MVM School logo">
+                    <span>M</span><span>V</span><span>M</span>
+                </div>
 
             <div>
                 <h1>MAHARISHI VIDYA MANDIR</h1>
-                <p>Education  Discipline  Success</p>
+                <p>Education • Discipline • Success</p>
             </div>
 
         </div>
@@ -628,9 +1019,56 @@
                 Contact Us
             </a>
 
+            <div class="quick-links">
+                <a class="quick-btn primary"
+                   href="https://madara018.github.io/Mvm-School/"
+                   target="_blank" rel="noopener noreferrer">
+                    🏫 MVM School
+                </a>
+                <a class="quick-btn"
+                   href="https://madara018.github.io/P.K-Classes/"
+                   target="_blank" rel="noopener noreferrer">
+                    📚 Class 10 Notes
+                </a>
+            </div>
+
         </div>
 
     </section>
+
+
+<section class="school-stats" id="school-stats">
+    <div class="stats-wrap">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+            <div class="stat-number">4.17</div>
+            <div class="stat-line"></div>
+            <div class="stat-label">ACRES LAND</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="stat-number">392</div>
+            <div class="stat-line"></div>
+            <div class="stat-label">STUDENTS</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <div class="stat-number">37</div>
+            <div class="stat-line"></div>
+            <div class="stat-label">TOTAL STAFF</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-landmark"></i></div>
+            <div class="stat-number">1992</div>
+            <div class="stat-line"></div>
+            <div class="stat-label">ESTABLISHED IN YEAR</div>
+        </div>
+    </div>
+</section>
+
 
     <!-- ABOUT -->
     <section id="about">
@@ -688,7 +1126,7 @@
 
 <section class="features" id="facilities">
 
-```
+
 <div class="section-title">
     <h2>Our Facilities</h2>
 
@@ -763,7 +1201,7 @@
 
             <div class="principal-photo">
     <img
-        src="principal.jpg"
+        src="images/principal.jpg"
         alt="Principal Mr. Peetambar Singh">
         </div>
 
@@ -794,7 +1232,7 @@
                 </p>
 
                 <strong>
-                     Mr. Peetambar Singh
+                    — Mr. Peetambar Singh
                 </strong>
 
             </div>
@@ -846,136 +1284,78 @@
 
     <!-- GALLERY -->
     <section id="gallery">
-
-        <div class="section-title">
-
-            <h2>
-                School Gallery
-            </h2>
-
-            <p>
-                Glimpses of learning and school life
-            </p>
-
-        </div>
-
-        <div class="gallery">
-
-         <div class="gallery-item">
-    <img src="images/school.jpg" alt="School Plantation Activity">
-</div>
-
-<div class="gallery-item">
-    <img src="images/school2.jpg" alt="School Independence Day Celebration">
-</div>
-      <div class="gallery">
-
-    <div class="gallery-item">
-        <img src="images/school.jpg" alt="School Plantation Activity">
+    <div class="section-title">
+        <span class="section-kicker">MEMORIES & MOMENTS</span>
+        <h2>School Gallery</h2>
+        <p>Real glimpses from Maharishi Vidya Mandir, Mankapur</p>
     </div>
 
-    <div class="gallery-item">
-        <img src="images/school2.jpg" alt="School Independence Day Celebration">
+    <div class="gallery">
+        <button class="gallery-item gallery-large" type="button"
+                onclick="openLightbox('images/school1.jpg','Plantation Activity')">
+            <img src="images/school1.jpg" alt="MVM School plantation activity">
+            <span class="gallery-caption">
+                <strong>Plantation Activity</strong>
+                <small>Learning beyond the classroom</small>
+            </span>
+        </button>
+
+        <button class="gallery-item gallery-large" type="button"
+                onclick="openLightbox('images/school2.jpg','Independence Day Celebration')">
+            <img src="images/school2.jpg" alt="MVM School Independence Day celebration">
+            <span class="gallery-caption">
+                <strong>Independence Day Celebration</strong>
+                <small>Celebrating together</small>
+            </span>
+        </button>
     </div>
-
-    <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"
-             alt="School Building">
-    </div>
-
-    <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=800&q=80"
-             alt="School Classroom">
-    </div>
-
-    <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
-             alt="Teacher">
-    </div>
-
-    <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80"
-             alt="Students Together">
-    </div>
-
-</div>
-        <!-- ADDRESS -->
-        <div class="contact-card">
-            <div class="icon address-icon">
-                <i class="fa-solid fa-location-dot"></i>
-            </div>
-
-            <h3>Address</h3>
-
-            <p>
-                Post Office - I.T.I. Ltd.<br>
-                Mankapur Township, District - Gonda<br>
-                Mankapur (271308)<br>
-                Uttar Pradesh
-            </p>
-        </div>
-
-        <!-- PHONE -->
-        <div class="contact-card">
-            <div class="icon phone-icon">
-                <i class="fa-solid fa-phone"></i>
-            </div>
-
-            <h3>Phone</h3>
-
-            <p>
-                <a href="tel:+915265230406">
-                    05265 - 230406
-                </a>
-            </p>
-        </div>
-
-        <!-- MOBILE -->
-        <div class="contact-card">
-            <div class="icon mobile-icon">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-            </div>
-
-            <h3>Mobile</h3>
-
-            <p>
-                <a href="tel:+919412530512">
-                    9412530512
-                </a>
-            </p>
-        </div>
-
-        <!-- FAX -->
-        <div class="contact-card">
-            <div class="icon fax-icon">
-                <i class="fa-solid fa-fax"></i>
-            </div>
-
-            <h3>Fax</h3>
-
-            <p>
-                05265 - 230406
-            </p>
-        </div>
-
-        <!-- EMAIL -->
-        <div class="contact-card">
-            <div class="icon email-icon">
-                <i class="fa-solid fa-envelope"></i>
-            </div>
-
-            <h3>E-mail</h3>
-
-            <p>
-                <a href="mailto:mvmmankapur@mssmail.org">
-                    mvmmankapur@mssmail.org
-                </a>
-            </p>
-        </div>
-
-    </div>
-
 </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with Maharishi Vidya Mandir, Mankapur</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                <h3>Address</h3>
+                <p>
+                    Post Office - I.T.I. Ltd.<br>
+                    Mankapur Township, District - Gonda<br>
+                    Mankapur (271308)<br>
+                    Uttar Pradesh
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="icon"><i class="fa-solid fa-phone"></i></div>
+                <h3>Phone</h3>
+                <p><a href="tel:+915265230406">05265 - 230406</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Mobile</h3>
+                <p><a href="tel:+919412530512">9412530512</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="icon"><i class="fa-solid fa-fax"></i></div>
+                <h3>Fax</h3>
+                <p>05265 - 230406</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                <h3>E-mail</h3>
+                <p><a href="mailto:mvmmankapur@mssmail.org">mvmmankapur@mssmail.org</a></p>
+            </div>
+        </div>
+    </section>
+
 
     <!-- FOOTER -->
     <footer>
@@ -985,7 +1365,7 @@
         </h3>
 
         <p>
-            Education  Discipline  Success
+            Education • Discipline • Success
         </p>
 
         <p class="copyright">
@@ -994,6 +1374,37 @@
 
     </footer>
 
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" type="button" aria-label="Close"
+            onclick="event.stopPropagation(); closeLightbox();">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="lightboxImage" src="" alt="">
+    <div class="lightbox-title" id="lightboxTitle"></div>
+</div>
+
+<script>
+function openLightbox(src, title) {
+    const box = document.getElementById("lightbox");
+    const image = document.getElementById("lightboxImage");
+    const label = document.getElementById("lightboxTitle");
+    image.src = src;
+    image.alt = title;
+    label.textContent = title;
+    box.classList.add("show");
+    document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").classList.remove("show");
+    document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeLightbox();
+});
+</script>
 </body>
 
 </html>
